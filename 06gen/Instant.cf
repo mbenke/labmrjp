@@ -1,0 +1,28 @@
+Prog. Program ::= [Stmt] ;
+
+SAss. Stmt ::= Ident "=" Exp;
+SExp. Stmt ::= Exp ;
+SBlock.  Stmt ::= "{" [Stmt] "}" ;
+SIfElse. Stmt ::= "if" "(" Cond ")" Stmt "else" Stmt ;
+SWhile.  Stmt ::= "while" "(" Cond ")" Stmt ;
+terminator Stmt "" ;
+_.        Stmt      ::= Stmt ";" ;
+
+
+CLt. Cond3 ::= Exp "<" Exp ;
+CGt. Cond3 ::= Exp ">" Exp ;
+CEq. Cond3 ::= Exp "==" Exp ;
+CNot. Cond2 ::= "!" Cond3 ;
+CAnd. Cond1 ::= Cond1 "&&" Cond2 ;
+COr. Cond1 ::= Cond1 "||" Cond2 ;
+coercions Cond 3;
+
+ExpAdd.            Exp5              ::= Exp5 "+"  Exp6 ;
+ExpSub.            Exp5              ::= Exp5 "-"  Exp6 ;
+ExpMul.            Exp6              ::= Exp6 "*"  Exp7 ;
+ExpDiv.            Exp6              ::= Exp6 "/"  Exp7 ;
+ExpMod.            Exp6              ::= Exp6 "%"  Exp7 ;
+ExpInt.            Exp9              ::= Integer ;
+ExpNegInt.	   Exp9		     ::= "-" Integer ;
+ExpVar. 	   Exp9 ::= Ident ;
+coercions Exp 9;
